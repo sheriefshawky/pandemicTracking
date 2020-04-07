@@ -1,0 +1,63 @@
+
+
+entity Person {
+	userId Long required,
+	mobileNo String required,
+    deviceId String required,
+	verificationCode String required,
+    status Integer required
+    
+}
+
+entity PersonTracking {
+	userId Long required,
+	locationLongitude Double required,
+	locationLatitude Double required,
+  	locationTime Instant
+}
+
+entity PersonInteracitonTracking {
+	userId Long required,
+    interactedUserId Long required,
+    locationLongitude Double required,
+	locationLatitude Double required,
+  	locationTime Instant
+}
+
+
+entity SymptomsSpecs {
+	code String required,
+    descriptionAr String required,
+    descriptionEn String required,
+    specType Integer required
+}
+
+entity SymptomsSumbission{
+	userId Long required,
+	submissionTime Instant required,
+}
+
+entity SymptomsSubDetails{
+	value String required
+}
+
+relationship OneToMany {
+	SymptomsSumbission{subDetails} to SymptomsSubDetails
+}
+
+relationship OneToOne {
+	SymptomsSubDetails{symptomSpec} to SymptomsSpecs
+}
+
+// Set pagination options
+paginate all with infinite-scroll
+paginate all with pagination
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl 
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
