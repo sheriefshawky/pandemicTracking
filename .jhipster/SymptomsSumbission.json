@@ -1,0 +1,38 @@
+{
+    "name": "SymptomsSumbission",
+    "fields": [
+        {
+            "fieldName": "userId",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "submissionTime",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "symptomsSubDetails",
+            "otherEntityRelationshipName": "symptomsSumbission",
+            "relationshipName": "subDetails"
+        }
+    ],
+    "changelogDate": "20200407202100",
+    "entityTableName": "symptoms_sumbission",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,25 @@
+{
+  "pandemicTrackingApp": {
+    "symptomsSpecs": {
+      "home": {
+        "title": "Symptoms Specs",
+        "createLabel": "Create a new Symptoms Specs",
+        "createOrEditLabel": "Create or edit a Symptoms Specs",
+        "notFound": "No Symptoms Specs found"
+      },
+      "created": "A new Symptoms Specs is created with identifier {{ param }}",
+      "updated": "A Symptoms Specs is updated with identifier {{ param }}",
+      "deleted": "A Symptoms Specs is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Symptoms Specs {{ id }}?"
+      },
+      "detail": {
+        "title": "Symptoms Specs"
+      },
+      "code": "Code",
+      "descriptionAr": "Description Ar",
+      "descriptionEn": "Description En",
+      "specType": "Spec Type"
+    }
+  }
+}

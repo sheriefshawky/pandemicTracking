@@ -1,0 +1,81 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-person-tracking-heading" jhiTranslate="pandemicTrackingApp.personTracking.home.createOrEditLabel">Create or edit a Person Tracking</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="pandemicTrackingApp.personTracking.userId" for="field_userId">User Id</label>
+                    <input type="number" class="form-control" name="userId" id="field_userId"
+                           formControlName="userId"/>
+                    <div *ngIf="editForm.get('userId')!.invalid && (editForm.get('userId')!.dirty || editForm.get('userId')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('userId')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('userId')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="pandemicTrackingApp.personTracking.locationLongitude" for="field_locationLongitude">Location Longitude</label>
+                    <input type="number" class="form-control" name="locationLongitude" id="field_locationLongitude"
+                           formControlName="locationLongitude"/>
+                    <div *ngIf="editForm.get('locationLongitude')!.invalid && (editForm.get('locationLongitude')!.dirty || editForm.get('locationLongitude')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('locationLongitude')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('locationLongitude')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="pandemicTrackingApp.personTracking.locationLatitude" for="field_locationLatitude">Location Latitude</label>
+                    <input type="number" class="form-control" name="locationLatitude" id="field_locationLatitude"
+                           formControlName="locationLatitude"/>
+                    <div *ngIf="editForm.get('locationLatitude')!.invalid && (editForm.get('locationLatitude')!.dirty || editForm.get('locationLatitude')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('locationLatitude')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('locationLatitude')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="pandemicTrackingApp.personTracking.locationTime" for="field_locationTime">Location Time</label>
+                    <div class="d-flex">
+                        <input id="field_locationTime" type="datetime-local" class="form-control" name="locationTime" formControlName="locationTime" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

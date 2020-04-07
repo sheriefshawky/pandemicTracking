@@ -1,0 +1,77 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="pandemicTrackingApp.personTracking.home.title">Person Trackings</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-person-tracking" [routerLink]="['/person-tracking/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="pandemicTrackingApp.personTracking.home.createLabel">
+            Create a new Person Tracking
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="personTrackings?.length === 0">
+        <span jhiTranslate="pandemicTrackingApp.personTracking.home.notFound">No personTrackings found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="personTrackings?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="userId"><span jhiTranslate="pandemicTrackingApp.personTracking.userId">User Id</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="locationLongitude"><span jhiTranslate="pandemicTrackingApp.personTracking.locationLongitude">Location Longitude</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="locationLatitude"><span jhiTranslate="pandemicTrackingApp.personTracking.locationLatitude">Location Latitude</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="locationTime"><span jhiTranslate="pandemicTrackingApp.personTracking.locationTime">Location Time</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let personTracking of personTrackings ;trackBy: trackId">
+                    <td><a [routerLink]="['/person-tracking', personTracking.id, 'view']">{{ personTracking.id }}</a></td>
+                    <td>{{ personTracking.userId }}</td>
+                    <td>{{ personTracking.locationLongitude }}</td>
+                    <td>{{ personTracking.locationLatitude }}</td>
+                    <td>{{ personTracking.locationTime | date:'medium' }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/person-tracking', personTracking.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/person-tracking', personTracking.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(personTracking)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="personTrackings?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>
