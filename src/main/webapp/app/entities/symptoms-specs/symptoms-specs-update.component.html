@@ -1,0 +1,78 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-symptoms-specs-heading" jhiTranslate="pandemicTrackingApp.symptomsSpecs.home.createOrEditLabel">Create or edit a Symptoms Specs</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="pandemicTrackingApp.symptomsSpecs.code" for="field_code">Code</label>
+                    <input type="text" class="form-control" name="code" id="field_code"
+                           formControlName="code"/>
+                    <div *ngIf="editForm.get('code')!.invalid && (editForm.get('code')!.dirty || editForm.get('code')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('code')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="pandemicTrackingApp.symptomsSpecs.descriptionAr" for="field_descriptionAr">Description Ar</label>
+                    <input type="text" class="form-control" name="descriptionAr" id="field_descriptionAr"
+                           formControlName="descriptionAr"/>
+                    <div *ngIf="editForm.get('descriptionAr')!.invalid && (editForm.get('descriptionAr')!.dirty || editForm.get('descriptionAr')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('descriptionAr')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="pandemicTrackingApp.symptomsSpecs.descriptionEn" for="field_descriptionEn">Description En</label>
+                    <input type="text" class="form-control" name="descriptionEn" id="field_descriptionEn"
+                           formControlName="descriptionEn"/>
+                    <div *ngIf="editForm.get('descriptionEn')!.invalid && (editForm.get('descriptionEn')!.dirty || editForm.get('descriptionEn')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('descriptionEn')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="pandemicTrackingApp.symptomsSpecs.specType" for="field_specType">Spec Type</label>
+                    <input type="number" class="form-control" name="specType" id="field_specType"
+                           formControlName="specType"/>
+                    <div *ngIf="editForm.get('specType')!.invalid && (editForm.get('specType')!.dirty || editForm.get('specType')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('specType')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('specType')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
