@@ -1,0 +1,40 @@
+{
+    "name": "SymptomsSubDetails",
+    "fields": [
+        {
+            "fieldName": "value",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "symptomsSpecs",
+            "otherEntityRelationshipName": "symptomsSubDetails",
+            "relationshipName": "symptomSpec",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "symptomsSumbission",
+            "otherEntityRelationshipName": "subDetails",
+            "relationshipName": "symptomsSumbission",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200407225700",
+    "entityTableName": "symptoms_sub_details",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

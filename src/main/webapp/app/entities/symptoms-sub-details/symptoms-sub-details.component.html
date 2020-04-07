@@ -1,0 +1,83 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="pandemicTrackingApp.symptomsSubDetails.home.title">Symptoms Sub Details</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-symptoms-sub-details" [routerLink]="['/symptoms-sub-details/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="pandemicTrackingApp.symptomsSubDetails.home.createLabel">
+            Create a new Symptoms Sub Details
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="symptomsSubDetails?.length === 0">
+        <span jhiTranslate="pandemicTrackingApp.symptomsSubDetails.home.notFound">No symptomsSubDetails found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="symptomsSubDetails?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="value"><span jhiTranslate="pandemicTrackingApp.symptomsSubDetails.value">Value</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="symptomSpec.id"><span jhiTranslate="pandemicTrackingApp.symptomsSubDetails.symptomSpec">Symptom Spec</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="symptomsSumbission.id"><span jhiTranslate="pandemicTrackingApp.symptomsSubDetails.symptomsSumbission">Symptoms Sumbission</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let symptomsSubDetails of symptomsSubDetails ;trackBy: trackId">
+                    <td><a [routerLink]="['/symptoms-sub-details', symptomsSubDetails.id, 'view']">{{ symptomsSubDetails.id }}</a></td>
+                    <td>{{ symptomsSubDetails.value }}</td>
+                    <td>
+                        <div *ngIf="symptomsSubDetails.symptomSpec">
+                            <a [routerLink]="['/symptoms-specs', symptomsSubDetails.symptomSpec?.id, 'view']" >{{ symptomsSubDetails.symptomSpec?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="symptomsSubDetails.symptomsSumbission">
+                            <a [routerLink]="['/symptoms-sumbission', symptomsSubDetails.symptomsSumbission?.id, 'view']" >{{ symptomsSubDetails.symptomsSumbission?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/symptoms-sub-details', symptomsSubDetails.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/symptoms-sub-details', symptomsSubDetails.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(symptomsSubDetails)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="symptomsSubDetails?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

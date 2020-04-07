@@ -1,0 +1,26 @@
+{
+  "pandemicTrackingApp": {
+    "personInteracitonTracking": {
+      "home": {
+        "title": "Person Interaciton Trackings",
+        "createLabel": "Create a new Person Interaciton Tracking",
+        "createOrEditLabel": "Create or edit a Person Interaciton Tracking",
+        "notFound": "No Person Interaciton Trackings found"
+      },
+      "created": "A new Person Interaciton Tracking is created with identifier {{ param }}",
+      "updated": "A Person Interaciton Tracking is updated with identifier {{ param }}",
+      "deleted": "A Person Interaciton Tracking is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Person Interaciton Tracking {{ id }}?"
+      },
+      "detail": {
+        "title": "Person Interaciton Tracking"
+      },
+      "userId": "User Id",
+      "interactedUserId": "Interacted User Id",
+      "locationLongitude": "Location Longitude",
+      "locationLatitude": "Location Latitude",
+      "locationTime": "Location Time"
+    }
+  }
+}

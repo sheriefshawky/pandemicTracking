@@ -1,0 +1,25 @@
+{
+  "pandemicTrackingApp": {
+    "personTracking": {
+      "home": {
+        "title": "Person Trackings",
+        "createLabel": "Create a new Person Tracking",
+        "createOrEditLabel": "Create or edit a Person Tracking",
+        "notFound": "No Person Trackings found"
+      },
+      "created": "A new Person Tracking is created with identifier {{ param }}",
+      "updated": "A Person Tracking is updated with identifier {{ param }}",
+      "deleted": "A Person Tracking is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Person Tracking {{ id }}?"
+      },
+      "detail": {
+        "title": "Person Tracking"
+      },
+      "userId": "User Id",
+      "locationLongitude": "Location Longitude",
+      "locationLatitude": "Location Latitude",
+      "locationTime": "Location Time"
+    }
+  }
+}

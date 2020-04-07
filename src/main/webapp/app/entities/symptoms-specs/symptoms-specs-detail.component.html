@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="symptomsSpecs">
+            <h2><span jhiTranslate="pandemicTrackingApp.symptomsSpecs.detail.title">Symptoms Specs</span> {{ symptomsSpecs.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="pandemicTrackingApp.symptomsSpecs.code">Code</span></dt>
+                <dd>
+                    <span>{{ symptomsSpecs.code }}</span>
+                </dd>
+                <dt><span jhiTranslate="pandemicTrackingApp.symptomsSpecs.descriptionAr">Description Ar</span></dt>
+                <dd>
+                    <span>{{ symptomsSpecs.descriptionAr }}</span>
+                </dd>
+                <dt><span jhiTranslate="pandemicTrackingApp.symptomsSpecs.descriptionEn">Description En</span></dt>
+                <dd>
+                    <span>{{ symptomsSpecs.descriptionEn }}</span>
+                </dd>
+                <dt><span jhiTranslate="pandemicTrackingApp.symptomsSpecs.specType">Spec Type</span></dt>
+                <dd>
+                    <span>{{ symptomsSpecs.specType }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/symptoms-specs', symptomsSpecs.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
