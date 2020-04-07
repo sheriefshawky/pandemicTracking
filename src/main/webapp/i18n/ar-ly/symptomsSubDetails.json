@@ -1,0 +1,24 @@
+{
+  "pandemicTrackingApp": {
+    "symptomsSubDetails": {
+      "home": {
+        "title": "Symptoms Sub Details",
+        "createLabel": "Create a new Symptoms Sub Details",
+        "createOrEditLabel": "Create or edit a Symptoms Sub Details",
+        "notFound": "No Symptoms Sub Details found"
+      },
+      "created": "A new Symptoms Sub Details is created with identifier {{ param }}",
+      "updated": "A Symptoms Sub Details is updated with identifier {{ param }}",
+      "deleted": "A Symptoms Sub Details is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Symptoms Sub Details {{ id }}?"
+      },
+      "detail": {
+        "title": "Symptoms Sub Details"
+      },
+      "value": "Value",
+      "symptomSpec": "Symptom Spec",
+      "symptomsSumbission": "Symptoms Sumbission"
+    }
+  }
+}
